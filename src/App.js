@@ -1,35 +1,15 @@
 import './App.css';
-import SearchInput from './SearchInput';
-import {useState} from 'react'
-
+import ExtendedSearch from './ExtendedSearch';
+import { MODE_AFTER_ENTER_PRESSED, MODE_AFTER_STOP_TYPING, MODE_IMMEDIATE  } from './modes';
 
 function App() {
-  const [filteredData, setFilteredData] = useState('')
-  const SearchInputModes = {
-    Immediate: "Immediate",
-    AfterEnter: "AfterEnterIsPressed",
-    AfterStopTyping: "AfterStopTyping"
-    }
-
-  const onSearchHandler = (technologies, searchTerm) => {
-      const data = technologies.filter(tech =>
-      tech.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setFilteredData(data);
-  }
 
   return (
     <div className="App">
       <header className="App-header">
-        <SearchInput
-        placeholder="Search"
-        mode={SearchInputModes.Immediate}
-        onSearch={onSearchHandler}
-        listData={filteredData}
-        >
-        </SearchInput>
-        
-        
+        <ExtendedSearch mode = {MODE_AFTER_ENTER_PRESSED}/>
+        <ExtendedSearch mode = {MODE_AFTER_STOP_TYPING}/>
+        <ExtendedSearch mode = {MODE_IMMEDIATE}/>
       </header>
     </div>
   );
