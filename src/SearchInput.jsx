@@ -2,29 +2,25 @@ import React, {useState, useEffect} from "react";
 import { technologies } from "./tech";
 
 
-function SearchInput({placeholder, mode, onSearch}) {
+function SearchInput({placeholder, mode, onSearch,listData}) {
     const [searchTerm, setSearchTerm] = useState("");
-    const [searchResults, setSearchResults] = useState([]);
     const handleChange = event => {
     setSearchTerm(event.target.value);
   }
 
     const handleKeyDown = event => {
-        if (event.key === 'Enter' && mode === "AfterEnterIsPressed") {
-            const results = onSearch(technologies, searchTerm)
-            setSearchResults(results)
-          }
+        if (event.key !== 'Enter' || mode !== "AfterEnterIsPressed")  return
+        onSearch(technologies, searchTerm)
+         
     }
 
   useEffect(() => {
     if (mode === "Immediate") {
-        const results = onSearch(technologies, searchTerm)
-        setSearchResults(results)
+        onSearch(technologies, searchTerm)
     }
     if (mode === "AfterStopTyping") {
         const delayDebounceFn = setTimeout(() => {
-            const results = onSearch(technologies, searchTerm)
-            setSearchResults(results)
+            onSearch(technologies, searchTerm)
           }, 3000)
       
           return () => clearTimeout(delayDebounceFn)   
@@ -42,7 +38,7 @@ function SearchInput({placeholder, mode, onSearch}) {
         onKeyDown={handleKeyDown}
       />        
         <ul>
-         {searchResults.map(item => (
+         {listData?.map(item => (
           <li>{item}</li>
         ))}
         </ul>
