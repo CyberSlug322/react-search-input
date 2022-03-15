@@ -13,7 +13,7 @@ function ExtendedSearch({mode}) {
   return (
     <div className="ExtendedSearch"> 
         <SearchInput
-        placeholder="Search"
+        placeholder="Type here to search"
         mode={mode}
         onSearch={onSearchHandler}
         listData={technologies.filter(tech => tech.toLowerCase().includes(searchTerm.toLowerCase()))}
