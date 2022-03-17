@@ -1,6 +1,7 @@
 import SearchInput from './SearchInput';
 import {useState} from 'react'
 import {technologies} from './tech'
+import SearchList from './SearchList';
 
 function ExtendedSearch({mode}) {
 
@@ -15,10 +16,9 @@ function ExtendedSearch({mode}) {
         <SearchInput
         placeholder="Type here to search"
         mode={mode}
-        onSearch={onSearchHandler}
-        listData={technologies.filter(tech => tech.toLowerCase().includes(searchTerm.toLowerCase()))}
-        >
-        </SearchInput>       
+        onSearch={onSearchHandler} 
+        />
+        <SearchList listData={technologies.filter(tech => tech.toLowerCase().includes(searchTerm.toLowerCase()))}/>    
     </div>
   );
 }

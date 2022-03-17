@@ -1,6 +1,6 @@
 import './App.css';
 import ExtendedSearch from './ExtendedSearch';
-import { searchMode  } from './modes';
+import { searchMode } from './modes';
 
 function App() {
 

@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { searchMode } from './modes'
 
-function SearchInput({placeholder, mode, onSearch, listData}) {
+function SearchInput({placeholder, mode, onSearch}) {
   const reference = useRef('')
     const handleChange = (e) => {
       if (mode !== searchMode.MODE_IMMEDIATE && mode !== searchMode.MODE_AFTER_STOP_TYPING) return
@@ -25,11 +25,7 @@ function SearchInput({placeholder, mode, onSearch, listData}) {
         onChange={handleChange}
         onKeyDown={handleKeyDown}
         />        
-        <ul>
-         {listData?.map((item, pos) => (
-          <li key={pos}>{item}</li>
-        ))}
-        </ul>
+        
     </div>
   );
 }
