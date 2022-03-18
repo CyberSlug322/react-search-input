@@ -1,4 +1,4 @@
-export const searchMode = {
+export const SearchMode = {
     MODE_IMMEDIATE: "MODE_IMMEDIATE",
     MODE_AFTER_ENTER_PRESSED: "MODE_AFTER_ENTER_PRESSED",
     MODE_AFTER_STOP_TYPING: "MODE_AFTER_STOP_TYPING"
